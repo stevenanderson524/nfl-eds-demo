@@ -13,11 +13,17 @@
 :root {
   /* colors */
   --background-color: white;
-  --light-color: #f8f8f8;
+  --light-color: #f0f4f8;
   --dark-color: #505050;
   --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  --link-color: #013369;
+  --link-hover-color: #012454;
+
+  /* NFL brand colors */
+  --nfl-blue: #013369;
+  --nfl-blue-dark: #012454;
+  --nfl-red: #d50a0a;
+  --nfl-gold: #ffb612;
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
@@ -199,8 +205,8 @@ button.button:disabled {
 
 a.button.primary,
 button.button.primary {
-  border-color: var(--text-color);
-  background-color: var(--text-color);
+  border-color: var(--nfl-blue);
+  background-color: var(--nfl-blue);
   color: var(--background-color);
 }
 
@@ -208,9 +214,9 @@ a.button.primary:hover,
 a.button.primary:focus-visible,
 button.button.primary:hover,
 button.button.primary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--dark-color);
-  color: var(--light-color);
+  border-color: var(--nfl-blue-dark);
+  background-color: var(--nfl-blue-dark);
+  color: var(--background-color);
 }
 
 a.button.primary[aria-disabled="true"],
@@ -254,8 +260,8 @@ button.button.secondary:disabled:focus-visible {
 /* high-impact call-to-action */
 a.button.accent,
 button.button.accent {
-  border-color: var(--link-color);
-  background-color: var(--link-color);
+  border-color: var(--nfl-red);
+  background-color: var(--nfl-red);
   color: var(--background-color);
 }
 
@@ -263,8 +269,8 @@ a.button.accent:hover,
 a.button.accent:focus-visible,
 button.button.accent:hover,
 button.button.accent:focus-visible {
-  border-color: var(--link-hover-color);
-  background-color: var(--link-hover-color);
+  border-color: #b00808;
+  background-color: #b00808;
 }
 
 a.button.accent[aria-disabled="true"],

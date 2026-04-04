@@ -1,10 +1,12 @@
 .columns > div {
   display: flex;
   flex-direction: column;
+  gap: 16px;
 }
 
 .columns img {
   width: 100%;
+  display: block;
 }
 
 .columns > div > div {
@@ -13,21 +15,65 @@
 
 .columns > div > .columns-img-col {
   order: 0;
+  line-height: 0;
 }
 
 .columns > div > .columns-img-col img {
   display: block;
+  width: 100%;
+}
+
+.columns h2,
+.columns h3 {
+  color: var(--nfl-blue);
+  margin-top: 0;
+}
+
+.columns a:any-link {
+  color: var(--nfl-blue);
+}
+
+.columns a:hover {
+  color: var(--nfl-red);
+}
+
+/* Dark variant */
+.columns.dark {
+  background-color: var(--nfl-blue);
+  color: #fff;
+  padding: 48px 0;
+}
+
+.columns.dark h2,
+.columns.dark h3 {
+  color: var(--nfl-gold);
+}
+
+.columns.dark a:any-link {
+  color: var(--nfl-gold);
+}
+
+.columns.dark a:hover {
+  color: #fff;
 }
 
 @media (width >= 900px) {
   .columns > div {
     align-items: center;
     flex-direction: unset;
-    gap: 24px;
+    gap: 40px;
   }
 
   .columns > div > div {
     flex: 1;
+    order: unset;
+  }
+
+  .columns-2-cols > div > div {
+    flex-basis: 50%;
+  }
+
+  .columns > div > .columns-img-col {
     order: unset;
   }
 }
