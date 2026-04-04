@@ -21,7 +21,6 @@ function buildPlaceholderCard(rows) {
 }
 
 async function build3DViewer(src, block) {
-  // Load Three.js r147 UMD build — pure WebGL, no WASM, CSP-safe
   await loadScript(`${CDN}/build/three.min.js`);
   await loadScript(`${CDN}/examples/js/loaders/GLTFLoader.js`);
 
@@ -31,77 +30,131 @@ async function build3DViewer(src, block) {
   wrapper.className = 'media-placeholder-3d';
   block.replaceChildren(wrapper);
 
-  // Renderer
+  // Renderer — transparent background, high quality
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setClearColor(0x000000, 0);
   renderer.outputEncoding = THREE.sRGBEncoding;
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.4;
+  renderer.toneMapping = THREE.NoToneMapping;
   wrapper.append(renderer.domElement);
 
-  // Scene
   const scene = new THREE.Scene();
 
-  // Camera
-  const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 1000);
-  camera.position.set(0, 0, 60);
+  // Orthographic-like perspective for a clean, straight-on look
+  const camera = new THREE.PerspectiveCamera(20, 1, 0.1, 1000);
 
-  // Lighting
-  scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+  // Clean, even lighting — lower intensity to prevent color washout
+  scene.add(new THREE.AmbientLight(0xffffff, 0.5));
 
-  const dirLight1 = new THREE.DirectionalLight(0xffffff, 1.2);
-  dirLight1.position.set(5, 10, 7);
-  scene.add(dirLight1);
+  const keyLight = new THREE.DirectionalLight(0xffffff, 0.6);
+  keyLight.position.set(0, 2, 15);
+  scene.add(keyLight);
 
-  const dirLight2 = new THREE.DirectionalLight(0x5a9fd4, 0.5);
-  dirLight2.position.set(-5, -3, 5);
-  scene.add(dirLight2);
+  const fillLeft = new THREE.DirectionalLight(0xffffff, 0.2);
+  fillLeft.position.set(-10, 0, 8);
+  scene.add(fillLeft);
 
-  const rimLight = new THREE.DirectionalLight(0xd4af37, 0.3);
-  rimLight.position.set(0, 5, -10);
-  scene.add(rimLight);
+  const fillRight = new THREE.DirectionalLight(0xffffff, 0.2);
+  fillRight.position.set(10, 0, 8);
+  scene.add(fillRight);
 
-  // Size — use block parent width since wrapper may not have layout yet
   function resize() {
-    const w = wrapper.clientWidth || block.clientWidth || 580;
-    const h = wrapper.clientHeight || 420;
+    const w = wrapper.clientWidth || block.clientWidth || 700;
+    const h = wrapper.clientHeight || 500;
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
   }
 
-  // Observe wrapper for size changes (handles initial layout)
   const ro = new ResizeObserver(() => resize());
   ro.observe(wrapper);
   resize();
   window.addEventListener('resize', resize);
 
-  // Load GLB model
+  // Load model
   const loader = new THREE.GLTFLoader();
   loader.load(
     src,
     (gltf) => {
       const model = gltf.scene;
 
-      // Center and scale
-      const box = new THREE.Box3().setFromObject(model);
+      // Correct material colors to official NFL brand specs
+      const colorFixes = {
+        b20019: '#D50A0A', // NFL Red
+        '7f0000': '#D50A0A', // NFL Red (was too dark)
+        '003366': '#003369', // NFL Blue
+        e5e5e5: '#FFFFFF', // NFL White
+      };
+      model.traverse((child) => {
+        if (child.isMesh && child.material) {
+          const mats = Array.isArray(child.material) ? child.material : [child.material];
+          mats.forEach((m) => {
+            if (m.color) {
+              const hex = m.color.getHexString();
+              if (colorFixes[hex]) m.color.set(colorFixes[hex]);
+            }
+          });
+        }
+      });
+
+      // The model contains two shield copies side-by-side:
+      // Left group (cx≈-4) = flat 2D version, Right group (cx≈33) = 3D version
+      // Hide the left (flat) group, keep only the 3D shield
+      model.traverse((child) => {
+        if (child.isMesh) {
+          const meshBox = new THREE.Box3().setFromObject(child);
+          const cx = meshBox.getCenter(new THREE.Vector3()).x;
+          if (cx < 15) child.visible = false;
+        }
+      });
+
+      // Use a pivot group to cleanly center + rotate
+      const pivot = new THREE.Group();
+
+      // Recalculate bounds with only visible meshes
+      const box = new THREE.Box3();
+      model.traverse((child) => {
+        if (child.isMesh && child.visible) {
+          const childBox = new THREE.Box3().setFromObject(child);
+          box.union(childBox);
+        }
+      });
       const center = box.getCenter(new THREE.Vector3());
       const size = box.getSize(new THREE.Vector3());
-      const maxDim = Math.max(size.x, size.y, size.z);
-      const scale = 20 / maxDim;
-      model.scale.setScalar(scale);
-      model.position.sub(center.multiplyScalar(scale));
 
-      scene.add(model);
+      // Offset the model so the visible shield is at origin
+      model.position.set(-center.x, -center.y, -center.z);
 
-      // Animate
+      // Scale to fill the viewport — large and bold
+      const maxDim = Math.max(size.x, size.y);
+      const pivotScale = 18 / maxDim;
+      pivot.scale.setScalar(pivotScale);
+
+      pivot.add(model);
+      scene.add(pivot);
+
+      // Camera straight on — the shield faces -Z in model space
+      // so we look from +Z direction
+      camera.position.set(0, 0, 50);
+      camera.lookAt(0, 0, 0);
+
+      // Gentle breathing animation — very subtle, keeps front-facing
       let animId;
+      let time = 0;
       function animate() {
         animId = requestAnimationFrame(animate);
-        model.rotation.y += 0.008;
+        time += 0.008;
+
+        // Very subtle Y oscillation: ±5 degrees max — shield stays front-facing
+        pivot.rotation.y = Math.sin(time) * 0.09;
+        // Gentle floating
+        pivot.position.y = Math.sin(time * 0.6) * 0.15;
+
         renderer.render(scene, camera);
       }
+
+      // Render first frame immediately
+      renderer.render(scene, camera);
       animate();
 
       // Pause when off-screen
