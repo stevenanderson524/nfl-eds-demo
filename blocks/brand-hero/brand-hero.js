@@ -1,4 +1,6 @@
 export default function decorate(block) {
+  document.body.classList.add('dark-page');
+
   const rows = [...block.children];
   const content = document.createElement('div');
   content.className = 'brand-hero-content';
