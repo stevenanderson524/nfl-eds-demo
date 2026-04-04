@@ -4,7 +4,7 @@
   padding: 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 16px;
 }
 
 .asset-cards > ul > li {
@@ -17,20 +17,20 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 180px;
-  padding: 32px 20px;
-  background-color: rgb(255 255 255 / 8%);
-  border: 1px solid rgb(255 255 255 / 12%);
-  border-radius: 12px;
+  min-height: 160px;
+  padding: 32px 16px;
+  background-color: rgb(255 255 255 / 6%);
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 16px;
   text-align: center;
   text-decoration: none;
   transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
 
 .asset-cards .asset-card:hover {
-  background-color: rgb(255 255 255 / 14%);
-  border-color: var(--nfl-gold);
-  transform: translateY(-4px);
+  background-color: rgb(255 255 255 / 12%);
+  border-color: rgb(255 255 255 / 25%);
+  transform: translateY(-3px);
 }
 
 .asset-cards .asset-card h3 {
@@ -45,7 +45,7 @@
 }
 
 .asset-cards .asset-card p {
-  color: var(--nfl-gold);
+  color: rgb(255 255 255 / 50%);
   font-size: var(--body-font-size-xs);
   font-weight: 600;
   margin: 0;
@@ -57,19 +57,20 @@
 }
 
 .asset-cards.full .asset-card {
-  max-width: 600px;
+  max-width: 580px;
   margin: 0 auto;
-  min-height: 160px;
+  min-height: 140px;
 }
 
-/* Accent card variant with gold background */
+/* Accent card variant */
 .asset-cards.accent .asset-card {
-  background-color: var(--nfl-blue);
+  background: linear-gradient(135deg, #013369 0%, #01245a 100%);
   border-color: var(--nfl-gold);
 }
 
 .asset-cards.accent .asset-card:hover {
-  background-color: var(--nfl-blue-dark);
+  background: linear-gradient(135deg, #01245a 0%, #011a45 100%);
+  border-color: var(--nfl-gold);
 }
 
 .asset-cards.accent .asset-card h3 {
@@ -81,8 +82,12 @@
 }
 
 @media (width >= 900px) {
+  .asset-cards > ul {
+    gap: 20px;
+  }
+
   .asset-cards .asset-card {
-    min-height: 200px;
+    min-height: 180px;
     padding: 40px 24px;
   }
 }
