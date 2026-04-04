@@ -1,0 +1,31 @@
+.media-placeholder {
+  max-width: 600px;
+  margin: 32px auto;
+}
+
+.media-placeholder-card {
+  background-color: rgb(255 255 255 / 8%);
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 12px;
+  padding: 48px 32px;
+  text-align: center;
+}
+
+.media-placeholder-card p {
+  color: rgb(255 255 255 / 65%);
+  font-size: var(--body-font-size-s);
+  margin: 0.3em 0;
+}
+
+.media-placeholder-card p:first-child {
+  color: rgb(255 255 255 / 90%);
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+  font-size: var(--heading-font-size-s);
+}
+
+@media (width >= 900px) {
+  .media-placeholder-card {
+    padding: 56px 40px;
+  }
+}
