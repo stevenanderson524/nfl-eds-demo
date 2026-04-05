@@ -1,4 +1,4 @@
 // eslint-disable-next-line no-unused-vars
 export default function decorate(block) {
-  /* Hero block is styled via CSS only */
+  /* Table block is styled via CSS only */
 }

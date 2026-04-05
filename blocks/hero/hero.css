@@ -4,117 +4,25 @@
 }
 
 .hero {
-  position: relative;
+  background: var(--nfl-blue);
+  color: var(--nfl-white);
   padding: 80px 24px;
-  min-height: 500px;
-  background: linear-gradient(135deg, var(--nfl-blue) 0%, #024a9c 60%, #013369 100%);
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
-
-/* Gradient overlay when image is present */
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to right,
-    rgb(1 51 105 / 92%) 0%,
-    rgb(1 51 105 / 55%) 55%,
-    rgb(0 0 0 / 15%) 100%
-  );
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* Position text above overlay */
-.hero > div {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  text-align: center;
 }
 
 .hero h1 {
-  max-width: 700px;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  margin-top: 0;
-  margin-bottom: 0.4em;
-  text-shadow: 0 2px 8px rgb(0 0 0 / 35%);
-}
-
-.hero h2 {
-  color: var(--nfl-gold);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: var(--body-font-size-s);
-  margin-top: 0;
-  margin-bottom: 0.5em;
+  color: var(--nfl-white);
+  font-size: 3.5rem;
+  margin-bottom: 16px;
 }
 
 .hero p {
-  color: rgb(255 255 255 / 88%);
-  max-width: 560px;
-  margin-bottom: 0.5em;
+  font-size: 1.25rem;
+  opacity: 0.9;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-.hero .button-wrapper {
-  margin-top: 1.5em;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.hero a.button.primary {
-  background-color: var(--nfl-red);
-  border-color: var(--nfl-red);
-  color: #fff;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.hero a.button.primary:hover,
-.hero a.button.primary:focus-visible {
-  background-color: #b00808;
-  border-color: #b00808;
-}
-
-.hero a.button.secondary {
-  border-color: rgb(255 255 255 / 75%);
-  background-color: transparent;
-  color: #fff;
-  font-weight: 600;
-}
-
-.hero a.button.secondary:hover,
-.hero a.button.secondary:focus-visible {
-  border-color: #fff;
-  background-color: rgb(255 255 255 / 12%);
-}
-
-/* Background image */
-.hero picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
-}
-
-.hero img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-
-@media (width >= 900px) {
-  .hero {
-    padding: 120px 32px;
-    min-height: 600px;
-  }
+.hero em {
+  font-style: normal;
 }

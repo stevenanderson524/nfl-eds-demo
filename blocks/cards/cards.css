@@ -8,16 +8,15 @@
 }
 
 .cards > ul > li {
-  border: 1px solid #dde3ea;
-  background-color: var(--background-color);
-  border-top: 3px solid var(--nfl-blue);
+  background: var(--nfl-grey-3);
+  border-radius: 8px;
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .cards > ul > li:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 28px rgb(1 51 105 / 14%);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
 }
 
 .cards .cards-card-image {
@@ -26,35 +25,16 @@
 
 .cards > ul > li img {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
 }
 
 .cards .cards-card-body {
-  margin: 16px;
+  padding: 20px;
 }
 
-.cards .cards-card-body h3,
-.cards .cards-card-body h2 {
+.cards .cards-card-body h2,
+.cards .cards-card-body h3 {
   margin-top: 0;
   color: var(--nfl-blue);
-  font-size: var(--heading-font-size-s);
-}
-
-.cards .cards-card-body a:any-link {
-  color: var(--nfl-blue);
-}
-
-.cards .cards-card-body a:hover {
-  color: var(--nfl-red);
-}
-
-.cards .cards-card-body p {
-  font-size: var(--body-font-size-s);
-  color: var(--dark-color);
-}
-
-/* Accent variant: red top border */
-.cards.red > ul > li {
-  border-top-color: var(--nfl-red);
 }
