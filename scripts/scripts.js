@@ -68,6 +68,14 @@ function buildAutoBlocks(main) {
     }
 
     buildHeroBlock(main);
+
+    // Remove orphaned metadata-like sections (e.g. stale cache)
+    main.querySelectorAll(':scope > div').forEach((section) => {
+      const ps = section.querySelectorAll(':scope > p');
+      if (ps.length === 2 && ps[0].textContent.trim() === 'theme') {
+        section.remove();
+      }
+    });
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);

@@ -8,6 +8,15 @@ helix-importer-ui
 *.bak
 .idea
 
+# Large 3D source files (keep only optimized .glb)
+assets/*.obj
+assets/*.mtl
+assets/*.ma
+assets/*.mb
+assets/*.max
+assets/*.c4d
+assets/*.zip
+
 # Ensure these files are tracked
 !CLAUDE.md
 !AGENTS.md
