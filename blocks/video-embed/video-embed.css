@@ -1,5 +1,5 @@
 .video-embed .video-embed-wrapper {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -22,6 +22,21 @@
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
+}
+
+.video-embed .video-embed-facade::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 50%, rgb(0 0 0 / 40%) 100%);
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 8px;
+  transition: opacity 0.3s ease;
+}
+
+.video-embed .video-embed-facade:hover::before {
+  opacity: 0.5;
 }
 
 .video-embed .video-embed-facade img {
@@ -51,6 +66,7 @@
   justify-content: center;
   box-shadow: 0 4px 24px rgb(0 0 0 / 40%);
   transition: transform 0.2s ease, background-color 0.2s ease;
+  z-index: 2;
 }
 
 .video-embed .video-embed-play::after {
@@ -79,4 +95,5 @@
 /* Dark page variant */
 body.dark-page .video-embed .video-embed-caption {
   color: rgb(255 255 255 / 60%);
+  letter-spacing: 0.02em;
 }
