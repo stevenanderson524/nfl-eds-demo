@@ -40,6 +40,7 @@ header nav[aria-expanded='true'] {
   header nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 0 32px;
     max-width: 1264px;
     padding: 0 32px;
@@ -145,20 +146,26 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
 /* brand */
 header .nav-brand {
   grid-area: brand;
-  flex-basis: 140px;
-  font-size: var(--heading-font-size-s);
-  font-weight: 700;
+  flex-basis: 200px;
+  flex-shrink: 0;
   line-height: 1;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 header nav .nav-brand a:any-link {
   color: #fff;
   text-decoration: none;
-  font-size: 22px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Separator dot between "NFL" and "Brand Book" */
+header nav .nav-brand a::after {
+  display: none;
 }
 
 header nav .nav-brand img {
@@ -178,20 +185,21 @@ header nav[aria-expanded='true'] .nav-sections {
   display: block;
   visibility: visible;
   align-self: start;
-  background-color: var(--nfl-blue-dark);
+  background-color: var(--nfl-blue);
   padding: 16px 24px;
+  border-top: 1px solid rgb(255 255 255 / 10%);
 }
 
 header nav .nav-sections ul {
   list-style: none;
   padding-left: 0;
-  font-size: var(--body-font-size-s);
+  font-size: var(--body-font-size-xs);
 }
 
 header nav .nav-sections ul > li {
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
 }
 
 header nav .nav-sections ul > li > ul {
@@ -202,6 +210,20 @@ header nav .nav-sections ul > li > ul > li {
   font-weight: 400;
   text-transform: none;
   letter-spacing: 0;
+}
+
+/* Mobile nav items spacing */
+header nav[aria-expanded='true'] .nav-sections .default-content-wrapper > ul > li {
+  padding: 12px 0;
+  border-bottom: 1px solid rgb(255 255 255 / 8%);
+}
+
+header nav[aria-expanded='true'] .nav-sections .default-content-wrapper > ul > li:last-child {
+  border-bottom: none;
+}
+
+header nav[aria-expanded='true'] .nav-sections .default-content-wrapper > ul > li > a {
+  display: block;
 }
 
 @media (width >= 900px) {
@@ -215,6 +237,7 @@ header nav .nav-sections ul > li > ul > li {
     align-self: unset;
     background-color: transparent;
     padding: 0;
+    border-top: none;
   }
 
   header nav .nav-sections .nav-drop {
@@ -245,7 +268,7 @@ header nav .nav-sections ul > li > ul > li {
 
   header nav .nav-sections ul {
     display: flex;
-    gap: 8px;
+    gap: 4px;
     margin: 0;
   }
 
@@ -253,19 +276,25 @@ header nav .nav-sections ul > li > ul > li {
     flex: 0 1 auto;
     position: relative;
     padding: 4px 0;
-    border-radius: 3px;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li > a {
     display: inline-block;
-    padding: 4px 12px;
+    padding: 6px 14px;
     border-radius: 3px;
     transition: background-color 0.15s ease;
+    font-size: 13px;
+    letter-spacing: 0.08em;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li > a:hover {
     background-color: rgb(255 255 255 / 12%);
     text-decoration: none;
+  }
+
+  /* Active page indicator */
+  header nav .nav-sections .default-content-wrapper > ul > li > a[aria-current='page'] {
+    background-color: rgb(255 255 255 / 10%);
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li > ul {
@@ -280,7 +309,7 @@ header nav .nav-sections ul > li > ul > li {
     width: 200px;
     top: 150%;
     padding: 8px 0;
-    background-color: var(--nfl-blue-dark);
+    background-color: var(--nfl-blue);
     border-top: 3px solid var(--nfl-red);
     box-shadow: 0 8px 24px rgb(0 0 0 / 30%);
     white-space: initial;
@@ -308,7 +337,7 @@ header nav .nav-sections ul > li > ul > li {
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li > ul > li a:hover {
-    color: var(--nfl-gold);
+    color: var(--nfl-grey-3);
     text-decoration: none;
   }
 }
@@ -319,20 +348,22 @@ header nav .nav-tools {
 }
 
 header nav .nav-tools a.button {
-  background-color: var(--nfl-red);
-  border-color: var(--nfl-red);
+  background-color: transparent;
+  border: 1.5px solid rgb(255 255 255 / 40%);
   color: #fff;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 13px;
+  letter-spacing: 0.08em;
+  font-size: 12px;
   padding: 0.4em 1.2em;
+  border-radius: 3px;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 
 header nav .nav-tools a.button:hover,
 header nav .nav-tools a.button:focus-visible {
-  background-color: #b00808;
-  border-color: #b00808;
+  background-color: rgb(255 255 255 / 10%);
+  border-color: rgb(255 255 255 / 70%);
 }
 
 /* Red accent bar at bottom of nav */
@@ -340,5 +371,5 @@ header .nav-wrapper::after {
   content: '';
   display: block;
   height: 3px;
-  background-color: var(--nfl-red);
+  background: linear-gradient(90deg, var(--nfl-red) 0%, var(--nfl-red) 60%, var(--nfl-blue-2) 100%);
 }
