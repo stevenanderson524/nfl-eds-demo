@@ -16,13 +16,14 @@
   --light-color: #f0f4f8;
   --dark-color: #505050;
   --text-color: #131313;
-  --link-color: #013369;
-  --link-hover-color: #012454;
+  --link-color: #003369;
+  --link-hover-color: #00254d;
 
   /* NFL brand colors */
-  --nfl-blue: #013369;
-  --nfl-blue-dark: #012454;
-  --nfl-red: #d50a0a;
+  --nfl-blue: #003369;
+  --nfl-blue-dark: #00254d;
+  --nfl-red: #D50A0A;
+  --nfl-white: #FFF;
   --nfl-gold: #ffb612;
 
   /* fonts */
@@ -332,7 +333,7 @@ main .section.highlight {
 
 /* Dark page theme — full blue gradient background */
 body.dark-page {
-  background: linear-gradient(175deg, #013369 0%, #01245a 40%, #011a45 100%);
+  background: linear-gradient(175deg, #003369 0%, #00254d 40%, #001a3a 100%);
 }
 
 body.dark-page main > .section {
