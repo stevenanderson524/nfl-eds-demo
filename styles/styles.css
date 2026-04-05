@@ -329,3 +329,37 @@ main .section.highlight {
   margin: 0;
   padding: 40px 0;
 }
+
+/* Dark page theme — full blue gradient background */
+body.dark-page {
+  background: linear-gradient(175deg, #013369 0%, #01245a 40%, #011a45 100%);
+}
+
+body.dark-page main > .section {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 16px 0;
+}
+
+body.dark-page main > .section > div {
+  max-width: 900px;
+}
+
+body.dark-page main > .section h2 {
+  color: #fff;
+  font-weight: 900;
+  font-size: var(--heading-font-size-l);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.3em;
+}
+
+body.dark-page main > .section p {
+  color: rgb(255 255 255 / 60%);
+  font-size: var(--body-font-size-s);
+  line-height: 1.7;
+}
+
+body.dark-page main > .section a:any-link {
+  color: var(--nfl-gold);
+}
