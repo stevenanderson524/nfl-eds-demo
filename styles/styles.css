@@ -6,6 +6,9 @@
   --nfl-red: #d50a0a;
   --nfl-red-2: #900;
   --nfl-white: #fff;
+  --nfl-gold: #b4975a;
+  --nfl-silver: #8f8e90;
+  --nfl-gridiron-black: #000;
   --nfl-grey-1: #455560;
   --nfl-grey-2: #8b99a1;
   --nfl-grey-3: #dae1e6;
@@ -18,8 +21,8 @@
   --link-hover-color: var(--nfl-blue);
 
   /* Typography */
-  --body-font-family: system-ui, 'Helvetica Neue', helvetica, arial, sans-serif;
-  --heading-font-family: var(--body-font-family);
+  --body-font-family: roboto, system-ui, 'Helvetica Neue', helvetica, arial, sans-serif;
+  --heading-font-family: roboto-condensed, roboto, system-ui, 'Helvetica Neue', helvetica, arial, sans-serif;
   --body-font-size-m: 18px;
   --body-font-size-s: 16px;
   --body-font-size-xs: 14px;
@@ -66,8 +69,20 @@ h6 {
   scroll-margin: calc(var(--nav-height) + 16px);
 }
 
-h1 { font-size: var(--heading-font-size-xxl); }
-h2 { font-size: var(--heading-font-size-xl); }
+h1 {
+  font-size: clamp(36px, 6vw, 64px);
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
 h3 { font-size: var(--heading-font-size-l); }
 h4 { font-size: var(--heading-font-size-m); }
 h5 { font-size: var(--heading-font-size-s); }
@@ -267,6 +282,57 @@ footer a:any-link {
 
 footer a:hover {
   color: var(--nfl-white);
+}
+
+/* Dark page theme (applied by brand-hero block) */
+body.dark-page {
+  background-color: var(--nfl-blue);
+  color: rgb(255 255 255 / 85%);
+}
+
+body.dark-page h1,
+body.dark-page h2,
+body.dark-page h3,
+body.dark-page h4,
+body.dark-page h5,
+body.dark-page h6 {
+  color: #fff;
+}
+
+body.dark-page a:any-link {
+  color: var(--nfl-blue-3);
+}
+
+body.dark-page a:hover {
+  color: #fff;
+}
+
+body.dark-page main > .section {
+  border-bottom: 1px solid rgb(255 255 255 / 8%);
+}
+
+body.dark-page main > .section:last-of-type {
+  border-bottom: none;
+}
+
+body.dark-page .button.primary {
+  background-color: var(--nfl-white);
+  border-color: var(--nfl-white);
+  color: var(--nfl-blue);
+}
+
+body.dark-page .button.primary:hover {
+  background-color: var(--nfl-grey-3);
+  border-color: var(--nfl-grey-3);
+}
+
+body.dark-page .button.secondary {
+  border-color: rgb(255 255 255 / 40%);
+  color: #fff;
+}
+
+body.dark-page .button.secondary:hover {
+  background-color: rgb(255 255 255 / 10%);
 }
 
 @media (width >= 900px) {

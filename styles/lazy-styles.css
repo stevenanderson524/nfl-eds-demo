@@ -1,1 +1,85 @@
 /* add global styles that can be loaded post LCP here */
+
+/* Red accent underline for section headings */
+main > .section > div > h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: var(--nfl-red);
+  margin-top: 12px;
+}
+
+body.dark-page main > .section > div > h2::after {
+  background-color: var(--nfl-gold);
+}
+
+/* NFL field-line section divider (opt-in via section metadata) */
+main > .section.field-divider::before {
+  content: '';
+  display: block;
+  height: 3px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--nfl-grey-3) 0,
+    var(--nfl-grey-3) 20px,
+    transparent 20px,
+    transparent 30px
+  );
+  opacity: 0.5;
+  margin-bottom: 40px;
+}
+
+body.dark-page main > .section.field-divider::before {
+  background: repeating-linear-gradient(
+    90deg,
+    rgb(255 255 255 / 15%) 0,
+    rgb(255 255 255 / 15%) 20px,
+    transparent 20px,
+    transparent 30px
+  );
+  opacity: 1;
+}
+
+/* Subtle dot-grid pattern on brand-hero (evokes play diagrams / X's and O's) */
+.brand-hero {
+  position: relative;
+}
+
+.brand-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgb(255 255 255 / 3%) 1px, transparent 1px),
+    radial-gradient(circle, rgb(255 255 255 / 2%) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.brand-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Scroll reveal animations — loaded post-LCP via delayed.js */
+@media (prefers-reduced-motion: no-preference) {
+  main > .section {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  main > .section:first-of-type,
+  main > .section.revealed {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Smooth anchor scrolling */
+html {
+  scroll-behavior: smooth;
+}

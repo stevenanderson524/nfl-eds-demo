@@ -173,6 +173,17 @@ header nav .nav-brand img {
   height: auto;
 }
 
+header nav .nav-brand .icon {
+  width: 28px;
+  height: 34px;
+  flex-shrink: 0;
+}
+
+header nav .nav-brand .icon img {
+  width: 28px;
+  height: 34px;
+}
+
 /* sections */
 header nav .nav-sections {
   grid-area: sections;

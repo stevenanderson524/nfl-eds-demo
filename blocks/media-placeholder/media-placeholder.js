@@ -58,6 +58,11 @@ async function build3DViewer(src, block) {
   fillRight.position.set(10, 0, 8);
   scene.add(fillRight);
 
+  // Rim light for depth — subtle blue accent from behind
+  const rimLight = new THREE.DirectionalLight(0x3399cc, 0.3);
+  rimLight.position.set(0, 3, -10);
+  scene.add(rimLight);
+
   function resize() {
     const w = wrapper.clientWidth || block.clientWidth || 700;
     const h = wrapper.clientHeight || 500;
@@ -138,6 +143,29 @@ async function build3DViewer(src, block) {
       camera.position.set(0, 0, 50);
       camera.lookAt(0, 0, 0);
 
+      // Drag-to-rotate interaction
+      let isDragging = false;
+      let prevX = 0;
+      let userRotation = 0;
+
+      wrapper.style.cursor = 'grab';
+      wrapper.addEventListener('pointerdown', (e) => {
+        isDragging = true;
+        prevX = e.clientX;
+        wrapper.style.cursor = 'grabbing';
+        wrapper.setPointerCapture(e.pointerId);
+      });
+      wrapper.addEventListener('pointerup', (e) => {
+        isDragging = false;
+        wrapper.style.cursor = 'grab';
+        wrapper.releasePointerCapture(e.pointerId);
+      });
+      wrapper.addEventListener('pointermove', (e) => {
+        if (!isDragging) return;
+        userRotation += (e.clientX - prevX) * 0.005;
+        prevX = e.clientX;
+      });
+
       // Gentle breathing animation — very subtle, keeps front-facing
       let animId;
       let time = 0;
@@ -145,8 +173,8 @@ async function build3DViewer(src, block) {
         animId = requestAnimationFrame(animate);
         time += 0.008;
 
-        // Very subtle Y oscillation: ±5 degrees max — shield stays front-facing
-        pivot.rotation.y = Math.sin(time) * 0.09;
+        // Combine breathing with user drag rotation
+        pivot.rotation.y = Math.sin(time) * 0.09 + userRotation;
         // Gentle floating
         pivot.position.y = Math.sin(time * 0.6) * 0.15;
 
