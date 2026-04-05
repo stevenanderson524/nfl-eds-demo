@@ -4,34 +4,37 @@
   padding: 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: 20px;
 }
 
 .color-swatch .color-swatch-item {
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  border: 1px solid var(--nfl-grey-dark, #e5e5e5);
+  border-radius: 4px;
   overflow: hidden;
 }
 
 .color-swatch .color-swatch-preview {
-  height: 100px;
+  height: 120px;
 }
 
 .color-swatch .color-swatch-info {
-  padding: 12px;
+  padding: 14px 16px;
+  background-color: var(--background-color);
 }
 
 .color-swatch .color-swatch-name {
   margin: 0;
-  font-weight: 600;
+  font-weight: 700;
   font-size: var(--body-font-size-s);
+  color: var(--text-color);
 }
 
 .color-swatch .color-swatch-value {
   margin: 4px 0 0;
   font-size: var(--body-font-size-xs);
   color: var(--dark-color);
-  font-family: monospace;
+  font-family: ui-monospace, 'SF Mono', monospace;
+  text-transform: uppercase;
 }
 
 @media (width >= 600px) {

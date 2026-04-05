@@ -1,10 +1,8 @@
+/* Footer: subtle grey background */
 footer {
-  background-color: var(--nfl-blue);
-  color: rgb(255 255 255 / 85%);
+  background-color: var(--nfl-grey, #f2f2f2);
+  color: var(--text-color);
   font-size: var(--body-font-size-xs);
-}
-
-footer .footer {
   border-top: 3px solid var(--nfl-red);
 }
 
@@ -20,28 +18,28 @@ footer .footer > div > .section {
 footer .footer > div > .section:last-child {
   padding-top: 16px;
   padding-bottom: 24px;
-  border-top: 1px solid rgb(255 255 255 / 12%);
+  border-top: 1px solid var(--nfl-grey-dark, #e5e5e5);
 }
 
 footer .footer p {
   margin: 0 0 8px;
-  color: rgb(255 255 255 / 70%);
+  color: var(--dark-color);
 }
 
 footer .footer a:any-link {
-  color: rgb(255 255 255 / 80%);
+  color: var(--nfl-blue);
   text-decoration: none;
 }
 
 footer .footer a:hover {
-  color: var(--nfl-gold);
+  color: var(--nfl-blue-dark);
   text-decoration: underline;
 }
 
 footer .footer h2,
 footer .footer h3,
 footer .footer strong {
-  color: #fff;
+  color: var(--nfl-blue);
   display: block;
   margin-bottom: 12px;
 }

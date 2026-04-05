@@ -1,12 +1,12 @@
 export default function decorate(block) {
+  // Move picture to be a direct child of the block for background positioning
   const pic = block.querySelector('picture');
   if (pic) {
-    const picWrapper = pic.closest('div');
-    if (picWrapper) picWrapper.classList.add('hero-image');
+    block.append(pic);
   }
 
-  const contentDivs = [...block.querySelectorAll(':scope > div > div')];
-  contentDivs.forEach((div) => {
+  // Mark remaining content divs
+  [...block.querySelectorAll(':scope > div > div')].forEach((div) => {
     if (!div.querySelector('picture')) {
       div.classList.add('hero-content');
     }

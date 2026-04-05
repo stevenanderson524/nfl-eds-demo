@@ -1,62 +1,112 @@
-.hero {
-  position: relative;
-  padding: 32px 0;
+/* Hero: full-width NFL Blue background with white text */
+.hero-container .hero-wrapper {
+  max-width: unset;
+  padding: 0;
 }
 
+.hero {
+  position: relative;
+  background-color: var(--nfl-blue);
+  color: var(--nfl-white);
+  padding: 48px 24px;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero > div {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero h1,
+.hero h2,
+.hero h3 {
+  color: var(--nfl-white);
+  margin-top: 0;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.hero h1 {
+  font-size: var(--heading-font-size-xxl);
+  line-height: 1.1;
+  margin-bottom: 0.3em;
+}
+
+.hero p {
+  color: rgb(255 255 255 / 80%);
+  font-size: var(--body-font-size-m);
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.hero .button-wrapper {
+  margin-top: 1.5em;
+}
+
+.hero a.button.primary {
+  background-color: var(--nfl-red);
+  border-color: var(--nfl-red);
+  color: var(--nfl-white);
+}
+
+.hero a.button.primary:hover,
+.hero a.button.primary:focus-visible {
+  background-color: #b00808;
+  border-color: #b00808;
+}
+
+.hero a.button.secondary {
+  border-color: rgb(255 255 255 / 60%);
+  background-color: transparent;
+  color: var(--nfl-white);
+}
+
+.hero a.button.secondary:hover,
+.hero a.button.secondary:focus-visible {
+  border-color: var(--nfl-white);
+  background-color: rgb(255 255 255 / 10%);
+}
+
+/* Hero with background image */
 .hero picture {
-  display: block;
+  position: absolute;
+  inset: 0;
 }
 
 .hero picture img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
 }
 
-.hero .hero-image {
-  position: relative;
-}
-
 .hero .hero-content {
-  padding: 16px;
+  position: relative;
+  z-index: 1;
 }
 
-.hero .hero-content h1 {
-  font-family: var(--heading-font-family);
-  font-size: var(--heading-font-size-xxl);
-  font-weight: 900;
-  line-height: 1.1;
-  margin: 0 0 16px;
-}
-
-.hero .hero-content p {
-  font-size: var(--body-font-size-m);
-  line-height: 1.6;
-}
-
-@media (width >= 600px) {
-  .hero {
-    padding: 48px 0;
-  }
+/* Red accent bar at bottom */
+.hero::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: var(--nfl-red);
+  z-index: 2;
 }
 
 @media (width >= 900px) {
   .hero {
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-  }
-
-  .hero > div {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    width: 100%;
-  }
-
-  .hero .hero-image,
-  .hero .hero-content {
-    flex: 1;
+    padding: 80px 32px;
+    min-height: 360px;
   }
 }

@@ -1,7 +1,7 @@
 .columns > div {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 32px;
 }
 
 .columns > div > div {
@@ -21,6 +21,7 @@
   display: block;
   width: 100%;
   height: auto;
+  border-radius: 4px;
 }
 
 @media (width >= 600px) {
@@ -31,5 +32,12 @@
 
   .columns > div > div {
     order: unset;
+  }
+}
+
+@media (width >= 900px) {
+  .columns > div {
+    gap: 48px;
+    align-items: center;
   }
 }

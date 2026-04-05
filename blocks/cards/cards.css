@@ -9,9 +9,14 @@
 
 .cards ul li {
   background-color: var(--background-color);
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  border: 1px solid var(--nfl-grey-dark, #e5e5e5);
+  border-radius: 4px;
   overflow: hidden;
+  transition: box-shadow 0.15s ease;
+}
+
+.cards ul li:hover {
+  box-shadow: 0 4px 16px rgb(0 0 0 / 10%);
 }
 
 .cards .cards-card-image picture {
@@ -27,11 +32,18 @@
 }
 
 .cards .cards-card-body {
-  padding: 16px;
+  padding: 20px;
 }
 
 .cards .cards-card-body h3 {
   margin-top: 0;
+  font-size: var(--heading-font-size-s);
+  color: var(--nfl-blue);
+}
+
+.cards .cards-card-body p {
+  color: var(--dark-color);
+  font-size: var(--body-font-size-s);
 }
 
 @media (width >= 600px) {
