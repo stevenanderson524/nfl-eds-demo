@@ -64,6 +64,43 @@ body.dark-page main > .section.field-divider::before {
   z-index: 1;
 }
 
+/* Photography showcase — editorial polish for photo+text columns */
+.section.photo-showcase .columns img {
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.section.photo-showcase .columns > div {
+  align-items: start;
+}
+
+.section.photo-showcase .columns h3 {
+  font-family: var(--heading-font-family);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: var(--heading-font-size-l);
+}
+
+.section.photo-showcase .columns h3::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background-color: var(--nfl-gold);
+  margin-bottom: 12px;
+}
+
+@media (width >= 900px) {
+  .section.photo-showcase .columns > div > div:first-child {
+    flex: 1.5;
+  }
+
+  .section.photo-showcase .columns > div > div:last-child {
+    flex: 1;
+  }
+}
+
 /* Smooth anchor scrolling */
 html {
   scroll-behavior: smooth;
