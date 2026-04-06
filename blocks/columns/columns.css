@@ -15,6 +15,17 @@
   border-radius: 8px;
 }
 
+.columns .columns-img-col picture {
+  display: block;
+}
+
+.columns .columns-img-col img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
 .columns h3 {
   color: var(--nfl-red);
 }

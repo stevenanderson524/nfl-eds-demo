@@ -44,6 +44,10 @@
   outline-offset: -2px;
 }
 
+.tabs-panel[hidden] {
+  display: none;
+}
+
 .tabs-panels {
   padding: 24px 0;
 }

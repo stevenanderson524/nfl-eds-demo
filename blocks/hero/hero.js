@@ -1,4 +1,20 @@
 export default function decorate(block) {
+  // Support optional background image: if first row's only cell
+  // contains a single picture, use as bg image
+  const firstRow = block.querySelector(':scope > div');
+  const firstCell = firstRow?.querySelector(':scope > div');
+  const picture = firstCell?.querySelector('picture');
+  const hasOnlyPicture = firstCell && firstCell.children.length === 1 && picture;
+
+  if (hasOnlyPicture) {
+    const bg = document.createElement('div');
+    bg.className = 'hero-bg-image';
+    bg.append(picture);
+    if (!firstRow.textContent.trim()) firstRow.remove();
+    block.prepend(bg);
+    block.classList.add('hero-with-image');
+  }
+
   // Support optional background video: if first child contains an MP4 link, use as bg video
   const firstLink = block.querySelector('a[href$=".mp4"]');
   if (firstLink) {
