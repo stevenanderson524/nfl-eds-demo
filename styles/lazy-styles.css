@@ -87,19 +87,19 @@ main .section.guidelines-dark .columns > div > div:last-child {
   border-radius: 2px;
 }
 
+main .section.guidelines-dark .columns h3 {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 0;
+}
+
 main .section.guidelines-dark .columns > div > div:first-child h3 {
   color: var(--nfl-gold);
 }
 
 main .section.guidelines-dark .columns > div > div:last-child h3 {
   color: var(--nfl-red);
-}
-
-main .section.guidelines-dark .columns h3 {
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-top: 0;
 }
 
 main .section.guidelines-dark .columns ul {
@@ -144,7 +144,3 @@ main .section.guidelines-dark .columns > div > div:last-child li::before {
   line-height: 1;
 }
 
-/* Smooth anchor scrolling */
-html {
-  scroll-behavior: smooth;
-}

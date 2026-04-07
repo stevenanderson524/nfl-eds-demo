@@ -36,6 +36,10 @@
   /* Layout */
   --nav-height: 64px;
   --section-max-width: 1200px;
+
+  /* Motion */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Body */
@@ -149,8 +153,9 @@ button.button {
   max-width: 100%;
   margin: 0;
   border: 2px solid transparent;
-  border-radius: 4px;
-  padding: 12px 24px;
+  border-radius: 8px;
+  padding: 14px 32px;
+  transition: all var(--transition-fast);
   font-family: var(--body-font-family);
   font-weight: 600;
   font-size: var(--body-font-size-s);
@@ -332,7 +337,30 @@ body.dark-page .button.secondary {
 }
 
 body.dark-page .button.secondary:hover {
-  background-color: rgb(255 255 255 / 10%);
+  background-color: rgb(255 255 255 / 15%);
+}
+
+/* Focus states for accessibility */
+a.button:focus-visible,
+button.button:focus-visible {
+  outline: 2px solid var(--nfl-gold);
+  outline-offset: 3px;
+}
+
+/* Dark page refinements */
+body.dark-page pre {
+  background: rgb(0 0 0 / 30%);
+  border: 1px solid rgb(255 255 255 / 10%);
+  color: rgb(255 255 255 / 85%);
+}
+
+body.dark-page main > .section > div > picture img {
+  border-radius: 8px;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
 }
 
 @media (width >= 900px) {

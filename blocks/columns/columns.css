@@ -13,6 +13,7 @@
   width: 100%;
   height: auto;
   border-radius: 8px;
+  transition: transform var(--transition-smooth), filter var(--transition-smooth);
 }
 
 .columns .columns-img-col picture {
@@ -26,16 +27,22 @@
   border-radius: 8px;
 }
 
+.columns .columns-img-col:hover img {
+  transform: scale(1.02);
+  filter: brightness(0.95);
+}
+
 .columns h3 {
   color: var(--nfl-red);
 }
 
 /* Dark variant */
 .columns.dark {
-  background-color: var(--nfl-blue);
+  background: rgb(0 0 0 / 20%);
   color: rgb(255 255 255 / 85%);
   padding: 40px 24px;
   border-radius: 12px;
+  border: 1px solid rgb(255 255 255 / 8%);
 }
 
 .columns.dark h2,
