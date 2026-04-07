@@ -4,7 +4,8 @@
 }
 
 .photo-split {
-  background: #0a0a0a;
+  background: rgb(0 0 0 / 20%);
+  border-radius: 4px;
 }
 
 .photo-split-layout {
@@ -94,9 +95,9 @@
 }
 
 /* Background variants via section metadata */
-.section.bg-dark .photo-split { background: #0a0a0a; }
-.section.bg-darker .photo-split { background: #050505; }
-.section.bg-navy .photo-split { background: #010d1a; }
+.section.bg-dark .photo-split { background: rgb(0 0 0 / 30%); }
+.section.bg-darker .photo-split { background: rgb(0 0 0 / 40%); }
+.section.bg-navy .photo-split { background: rgb(0 10 26 / 50%); }
 
 /* Reverse variant */
 .photo-split.reverse .photo-split-layout {
