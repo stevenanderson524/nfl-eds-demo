@@ -64,25 +64,62 @@ body.dark-page main > .section.field-divider::before {
   z-index: 1;
 }
 
-/* Photography showcase — editorial polish for photo+text columns */
-.section.photo-showcase .columns img {
-  aspect-ratio: 3 / 4;
+/* Photography showcase — dark editorial treatment for photo+text columns */
+main .section.photo-showcase {
+  background-color: #0a0a0a;
+  margin: 0;
+  padding: 0;
+}
+
+main .section.photo-showcase > div {
+  max-width: unset;
+  padding: 0;
+}
+
+main .section.photo-showcase .columns {
+  background: #0a0a0a;
+}
+
+main .section.photo-showcase .columns > div {
+  gap: 0;
+  align-items: stretch;
+}
+
+main .section.photo-showcase .columns > div > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+main .section.photo-showcase .columns > div > .columns-img-col {
+  min-height: 400px;
+  position: relative;
+  overflow: hidden;
+}
+
+main .section.photo-showcase .columns > div > .columns-img-col img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 4px;
 }
 
-.section.photo-showcase .columns > div {
-  align-items: start;
+main .section.photo-showcase .columns > div > div:not(.columns-img-col) {
+  padding: 48px 24px;
 }
 
-.section.photo-showcase .columns h3 {
+main .section.photo-showcase .columns h3 {
   font-family: var(--heading-font-family);
+  color: #fff;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-size: var(--heading-font-size-l);
+  margin-top: 0;
 }
 
-.section.photo-showcase .columns h3::before {
+main .section.photo-showcase .columns h3::before {
   content: '';
   display: block;
   width: 40px;
@@ -91,13 +128,35 @@ body.dark-page main > .section.field-divider::before {
   margin-bottom: 12px;
 }
 
+main .section.photo-showcase .columns p {
+  color: rgb(255 255 255 / 65%);
+  font-size: var(--body-font-size-s);
+  line-height: 1.7;
+}
+
+main .section.photo-showcase .columns strong {
+  color: rgb(255 255 255 / 90%);
+}
+
+main .section.photo-showcase .columns a:any-link {
+  color: var(--nfl-gold);
+}
+
 @media (width >= 900px) {
-  .section.photo-showcase .columns > div > div:first-child {
-    flex: 1.5;
+  main .section.photo-showcase .columns > div {
+    flex-direction: row;
   }
 
-  .section.photo-showcase .columns > div > div:last-child {
+  main .section.photo-showcase .columns > div > div {
     flex: 1;
+  }
+
+  main .section.photo-showcase .columns > div > .columns-img-col {
+    min-height: 500px;
+  }
+
+  main .section.photo-showcase .columns > div > div:not(.columns-img-col) {
+    padding: 64px 48px;
   }
 }
 
