@@ -160,6 +160,277 @@ main .section.photo-showcase .columns a:any-link {
   }
 }
 
+/* Brand-section style — red sidebar accent with text + image (brand book layout) */
+main .section.brand-section {
+  margin: 0;
+  padding: 0;
+}
+
+main .section.brand-section > div {
+  max-width: unset;
+  padding: 0;
+}
+
+main .section.brand-section .columns {
+  border-left: 4px solid var(--nfl-red);
+}
+
+main .section.brand-section .columns > div {
+  gap: 0;
+  align-items: stretch;
+}
+
+main .section.brand-section .columns > div > div:not(.columns-img-col) {
+  background: #f5f5f5;
+  padding: 48px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+main .section.brand-section .columns > div > .columns-img-col {
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+}
+
+main .section.brand-section .columns > div > .columns-img-col img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+main .section.brand-section .columns h2,
+main .section.brand-section .columns h3 {
+  color: #003369;
+  margin-top: 0;
+}
+
+main .section.brand-section .columns p {
+  color: #455560;
+  font-size: var(--body-font-size-s);
+  line-height: 1.8;
+}
+
+main .section.brand-section .columns em {
+  color: var(--nfl-red);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+@media (width >= 900px) {
+  main .section.brand-section .columns > div {
+    flex-direction: row;
+  }
+
+  main .section.brand-section .columns > div > div {
+    flex: 1;
+  }
+
+  main .section.brand-section .columns > div > .columns-img-col {
+    flex: 1.5;
+    min-height: 500px;
+  }
+
+  main .section.brand-section .columns > div > div:not(.columns-img-col) {
+    padding: 80px 48px;
+  }
+}
+
+/* Guidelines section style — Do's/Don'ts with styled lists */
+main .section.guidelines {
+  padding: 80px 0;
+}
+
+main .section.guidelines .columns h3 {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+main .section.guidelines .columns ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+main .section.guidelines .columns li {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #455560;
+  padding: 12px 0 12px 24px;
+  border-bottom: 1px solid #e8ecf0;
+  position: relative;
+}
+
+main .section.guidelines .columns li:last-child {
+  border-bottom: none;
+}
+
+main .section.guidelines .columns > div > div:first-child h3 {
+  color: #003369;
+}
+
+main .section.guidelines .columns > div > div:last-child h3 {
+  color: var(--nfl-red);
+}
+
+main .section.guidelines .columns > div > div:first-child li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 17px;
+  width: 10px;
+  height: 5px;
+  border-left: 2px solid #003369;
+  border-bottom: 2px solid #003369;
+  transform: rotate(-45deg);
+}
+
+main .section.guidelines .columns > div > div:last-child li::before {
+  content: '\00d7';
+  position: absolute;
+  left: 2px;
+  top: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--nfl-red);
+  line-height: 1;
+}
+
+/* Guidelines-dark variant for photo-page */
+main .section.guidelines-dark {
+  padding: 80px 0;
+}
+
+main .section.guidelines-dark .columns > div {
+  gap: 40px;
+}
+
+main .section.guidelines-dark .columns > div > div:first-child {
+  background: rgb(255 182 18 / 6%);
+  border-left: 3px solid var(--nfl-gold);
+  padding: 40px;
+  border-radius: 2px;
+}
+
+main .section.guidelines-dark .columns > div > div:last-child {
+  background: rgb(213 10 10 / 6%);
+  border-left: 3px solid var(--nfl-red);
+  padding: 40px;
+  border-radius: 2px;
+}
+
+main .section.guidelines-dark .columns > div > div:first-child h3 {
+  color: var(--nfl-gold);
+}
+
+main .section.guidelines-dark .columns > div > div:last-child h3 {
+  color: var(--nfl-red);
+}
+
+main .section.guidelines-dark .columns h3 {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 0;
+}
+
+main .section.guidelines-dark .columns ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+main .section.guidelines-dark .columns li {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgb(255 255 255 / 60%);
+  padding: 10px 0 10px 28px;
+  border-bottom: 1px solid rgb(255 255 255 / 6%);
+  position: relative;
+}
+
+main .section.guidelines-dark .columns li:last-child {
+  border-bottom: none;
+}
+
+main .section.guidelines-dark .columns > div > div:first-child li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 12px;
+  height: 6px;
+  border-left: 2px solid var(--nfl-gold);
+  border-bottom: 2px solid var(--nfl-gold);
+  transform: rotate(-45deg);
+}
+
+main .section.guidelines-dark .columns > div > div:last-child li::before {
+  content: '\00d7';
+  position: absolute;
+  left: 2px;
+  top: 6px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--nfl-red);
+  line-height: 1;
+}
+
+/* Photo-page section intros — centered with gold accents */
+body.photo-page main > .section > div > h2::after {
+  background-color: transparent;
+}
+
+body.photo-page main > .section > div {
+  text-align: center;
+}
+
+body.photo-page main > .section > div > em {
+  display: inline-block;
+  font-family: var(--heading-font-family);
+  font-style: normal;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--nfl-gold);
+}
+
+body.photo-page main > .section > div > h2 {
+  font-size: var(--heading-font-size-xl);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+body.photo-page main > .section > div > p {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgb(255 255 255 / 60%);
+}
+
+/* Brand-page section intros */
+body.brand-page main > .section > div > h1 {
+  text-align: center;
+}
+
+body.brand-page main > .section > div > h1::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 4px;
+  background: var(--nfl-red);
+  margin: 16px auto 0;
+}
+
 /* Smooth anchor scrolling */
 html {
   scroll-behavior: smooth;

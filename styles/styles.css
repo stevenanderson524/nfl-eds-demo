@@ -335,6 +335,72 @@ body.dark-page .button.secondary:hover {
   background-color: rgb(255 255 255 / 10%);
 }
 
+/* Brand page theme (photography brand book — white/light) */
+body.brand-page {
+  background: #fff;
+  color: #1a1a2e;
+}
+
+body.brand-page main {
+  position: relative;
+}
+
+body.brand-page main::before {
+  content: '';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: url('/images/NFL_Shield_rgb.png') center / contain no-repeat;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body.brand-page main > .section {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}
+
+body.brand-page h1,
+body.brand-page h2 {
+  color: #003369;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+body.brand-page h3 {
+  color: #003369;
+}
+
+/* Photo page theme (photography principles — dark) */
+body.photo-page {
+  background: #000;
+  color: #fff;
+}
+
+body.photo-page main > .section {
+  margin: 0;
+}
+
+body.photo-page h1,
+body.photo-page h2,
+body.photo-page h3 {
+  color: #fff;
+}
+
+body.photo-page p {
+  color: rgb(255 255 255 / 70%);
+}
+
+body.photo-page a:any-link {
+  color: var(--nfl-gold);
+}
+
 @media (width >= 900px) {
   main > .section > div {
     padding: 0 32px;
