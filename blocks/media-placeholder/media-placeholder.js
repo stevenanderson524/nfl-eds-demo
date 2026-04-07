@@ -41,7 +41,7 @@ async function build3DViewer(src, block) {
   const scene = new THREE.Scene();
 
   // Orthographic-like perspective for a clean, straight-on look
-  const camera = new THREE.PerspectiveCamera(20, 1, 0.1, 1000);
+  const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 1000);
 
   // Clean, even lighting — lower intensity to prevent color washout
   scene.add(new THREE.AmbientLight(0xffffff, 0.5));
@@ -132,7 +132,7 @@ async function build3DViewer(src, block) {
 
       // Scale to fill the viewport — large and bold
       const maxDim = Math.max(size.x, size.y);
-      const pivotScale = 18 / maxDim;
+      const pivotScale = 14 / maxDim;
       pivot.scale.setScalar(pivotScale);
 
       pivot.add(model);
